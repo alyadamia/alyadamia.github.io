@@ -26,36 +26,3 @@ The e-Portfolio highlights the progression of building the Period Tracker App th
 *   **Intelligent Clinic Locator:** Connects with device **GPS hardware sensors** and fetches public live web endpoints using **Retrofit** to guide users to the nearest clinics.
 *   **Material Design 3 (MD3):** Immersive, responsive dark-orchid velvet user interface customized for accessibility.
 
----
-
-## 🛠️ Setup & Local Deployment Instructions
-
-To view or edit this e-Portfolio website locally on your computer, follow these simple steps:
-
-### Prerequisites
-You only need a web browser (such as Google Chrome, Microsoft Edge, or Safari). No extra servers or programming environments are required.
-
-### Steps
-1.  **Clone the Repository:**
-```bash
-    git clone [https://github.com/alyadamia/alyadamia.github.io.git](https://github.com/alyadamia/alyadamia.github.io.git)
-    ```
-    *(Alternatively, you can just download the `index.html` file directly from this repository).*
-
-2.  **Open the File:**
-    *   Locate the downloaded `index.html` file in your file explorer.
-    *   Double-click the file, or right-click and choose **"Open with"** followed by your preferred web browser.
-
-3.  **Inspect Responsiveness (Optional):**
-    *   Right-click anywhere on the open web page and select **Inspect** (or press `F12`).
-    *   Click the device toggle icon to see how the fluid layout cleanly scales between desktop and mobile resolutions.
-
----
-
-## 📌 Student & Course Metadata
-*   **Student Name:** ALYA DAMIA BINTI MOHAMAD FAJAR
-*   **Matric Number:** A212029
-*   **Programme:** Bachelor of Software Engineering with Honours
-*   **Course Code:** TK2323 / TM2213 (Mobile Programming)
-*   **Instructor:** DR NAZATUL AINI BINTI ABD MAJID
-*   **Academic Year:** 2026
