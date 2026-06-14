@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alya Damia | Mobile Programming e-Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #d81b60;
+            --primary-light: #f48fb1;
+            --primary-dark: #880e4f;
+            --accent-color: #e91e63;
+            --bg-color: #fff5f7;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --text-light: #5a6c7d;
+            --nav-bg: rgba(255, 245, 247, 0.95);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--nav-bg);
+            box-shadow: 0 2px 10px rgba(216, 27, 96, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Layout Container */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            padding: 4rem 0 2rem 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Home/Hero Section */
+        #home {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-top: 2rem;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(216, 27, 96, 0.05);
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            background: #fff0f3;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .sdg-box {
+            background: #e3f2fd;
+            border-left: 6px solid #1976d2;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            color: #0d47a1;
+        }
+
+        .sdg-box h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Cards Grid Strategy */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .card-reflection {
+            background: #fafafa;
+            border-left: 3px solid var(--primary-light);
+            padding: 0.75rem 1rem;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: auto;
+            color: #4f5d6a;
+        }
+
+        /* Video Embed Aspect Ratio Box */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Reflection Section */
+        .reflection-block {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border-right: 6px solid var(--primary-color);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            background: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(216, 27, 96, 0.1);
+            color: var(--primary-dark);
+        }
+
+        /* Resources Styling */
+        .resources-block {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .resources-block h3 {
+            color: var(--primary-dark);
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .resources-block h3:first-child {
+            margin-top: 0;
+        }
+
+        .resources-block ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+
+        .resources-block li {
+            margin-bottom: 0.5rem;
+        }
+
+        .resources-block p {
+            font-style: italic;
+            color: var(--text-light);
+            background: #fafafa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Layout Overrides */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .profile-name {
+                font-size: 2rem;
+            }
+            main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home" class="nav-logo">AD Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#labs">Labs</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#reflection">Reflection</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="profile-card">
+                <h1 class="profile-name">ALYA DAMIA BINTI MOHAMAD FAJAR</h1>
+                <div class="meta-info">
+                    <div><strong>Matric No:</strong> A212029</div>
+                    <div><strong>Programme:</strong> 2SE3 (SOFTWARE ENGINEERING)</div>
+                    <div><strong>Instructor:</strong> DR NAZATUL AINI BINTI ABD MAJID</div>
+                </div>
+                <p class="card-description" style="font-size: 1.1rem;">
+                    Hello everyone. My name is Alya Damia, and I am a university student interested in developing technology solutions that improve people's daily lives. Today, I will be presenting my Period Tracker App, which supports women's health by helping users monitor their menstrual cycles and health patterns.
+                </p>
+                
+                <div class="sdg-box">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                        SDG 3 - Good Health and Well Being
+                    </h3>
+                    <p>This SDG 3 matters to me because my Period Tracker App helps women monitor their menstrual health, increase health awareness, and support their overall well-being.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="labs">
+            <h2>Laboratory Exercises</h2>
+            <div class="cards-grid">
+                
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/LTgtp2PIpyA" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lab 1: UI Engineering</h3>
+                        <p class="card-description">Explorations in Jetpack Compose layout architectures and declarative view positioning configurations.</p>
+                        <p class="card-reflection">
+                            Through this lab, I learn layouts of Jetpack Compose, such as Columns, Rows, and Boxes, to build clean native user interfaces. This knowledge allowed me to structure the layout architecture for my application's Home Screen and custom components effectively. It taught me how to handle UI positioning reactively without relying on traditional XML layouts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/iRr-BvMSFYc" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lab 2: State &amp; Interactions</h3>
+                        <p class="card-description">Capturing explicit view events and handling mutation bindings cleanly within the pipeline lifecycle.</p>
+                        <p class="card-reflection">
+                            This lab enhanced my understanding of state management and event handling in Android using state primitives like remember and mutableStateOf. I successfully applied these interaction concepts to capture user inputs dynamically and toggle UI states in real time. It was crucial for enabling features like symptom selection, where the interface must immediately respond to user taps.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/2ifRzSMxUhM" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lab 3: Material Design 3</h3>
+                        <p class="card-description">Utilizing modern Design Tokens, Scaffolding architectures, and uniform context structuring frameworks.</p>
+                        <p class="card-reflection">
+                            Implementing Material Design 3 components and theming in this lab helped me understand how to create a visually appealing and accessible user experience. I learned how to utilize advanced design components like Scaffold, TopAppBar, and custom dynamic Card styling for my project. This directly improved the look and feel of my dashboard and symptom cards, ensuring they comply with modern Android design standards.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/3JSG_QBixbg" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lab 4: Backstack Navigation</h3>
+                        <p class="card-description">Abstracting explicit component intent routing utilizing modern declarative structural frameworks.</p>
+                        <p class="card-reflection">
+                            This lab provided me with the skills to implement the Jetpack Compose Navigation component to manage screen routing and deep linkages. It helped me design a seamless 7-screen architecture for my project, allowing smooth user transitions from the dashboard to the history and locator screens. I also learned how to maintain a clean back-stack and prevent navigation lag between active destinations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/c_MwTAAw-E8" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lab 5: Room Architecture</h3>
+                        <p class="card-description">Configuring DAOs, continuous reactive flows, and asynchronous system data transactions.</p>
+                        <p class="card-reflection">
+                            Through this lab, I learned how to set up local database persistence using the Room Library, including configuring Entities, DAOs, and Repositories. This allowed me to implement a local-first architecture for my application, enabling users to save and view their cycle history permanently without an internet connection. It also deepened my understanding of how to observe database tables reactively using Kotlin StateFlow to automatically update the UI layer.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Course Projects</h2>
+            <div class="cards-grid">
+                
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/5DyaI26DsNw" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Project 1: PeriodTracker Core</h3>
+                        <p class="card-description"><strong>Problem Statement:</strong> Many women lack simple digital tools to track their menstrual health patterns. My solution is this Period Tracker App, which allows users to log dates, symptoms, and moods to gain better health insights using a shared ViewModel.</p>
+                        <p class="card-reflection"><strong>Lessons Learned:</strong> Project 1 taught me the basics of building an Android app using Jetpack Compose and Kotlin. I learned how to create a simple user interface and make sure screens can talk to each other smoothly. It also helped me understand how to take user inputs and show them correctly on the layout.</p>
+                        <a href="https://github.com/alyadamia/A212029_AlyaDamia_DrNazatul_Project1" target="_blank" class="btn">View on GitHub</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/QfX_meKff1c" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Project 2: PeriodTracker Advanced Ecosystem</h3>
+                        <p class="card-description"><strong>Problem Statement:</strong> Many women struggle to track their menstrual cycles, symptoms, and moods consistently due to a lack of centralized digital tools, making it difficult to maintain a reliable history of their health records. Additionally, when irregular patterns or health issues arise, users face a gap in accessing physical healthcare because they cannot quickly find nearby medical facilities.</p>
+                        <p class="card-reflection"><strong>Lessons Learned:</strong> In Project 2, I learned how to build a much bigger app by connecting a local Room Database with online Firebase cloud storage. I also gained great experience using the phone's GPS sensor and fetching live clinic data from the internet using Retrofit. This project taught me how to solve real-world health problems like SDG 3 using advanced coding tools.</p>
+                        <a href="https://github.com/alyadamia/A212029_AlyaDamia_DrNazatul_Project2" target="_blank" class="btn">View on GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="reflection">
+            <h2>Reflection &amp; Learning Journey</h2>
+            <div class="reflection-block">
+                "Building this Period Tracker App has significantly improved my skills in mobile application architecture and modern Android development. I learned how to create a highly responsive user interface with Jetpack Compose and successfully manage offline-first capabilities using a local Room Database. Integrating live web APIs with device hardware sensors like GPS also taught me how to bridge the gap between digital data and real-world utility. This journey has given me a deep appreciation for using technology to solve meaningful health challenges aligned with SDG 3."
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills &amp; Tech Stack</h2>
+            <div class="skills-container">
+                <span class="skill-badge">Kotlin</span>
+                <span class="skill-badge">Jetpack Compose</span>
+                <span class="skill-badge">Jetpack Navigation</span>
+                <span class="skill-badge">Shared ViewModel</span>
+                <span class="skill-badge">StateFlow</span>
+                <span class="skill-badge">Coroutines</span>
+                <span class="skill-badge">Room Database</span>
+                <span class="skill-badge">Retrofit</span>
+                <span class="skill-badge">Firebase Firestore</span>
+                <span class="skill-badge">Android Location Services (GPS Hardware Sensor)</span>
+                <span class="skill-badge">Material Design 3</span>
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>Resources</h2>
+            <div class="resources-block">
+                <h3>APIs &amp; Libraries Used</h3>
+                <ul>
+                    <li><strong>Retrofit &amp; Gson Converter:</strong> Used to network client requests and parse incoming data.</li>
+                    <li><strong>OpenStreetMap (Overpass API):</strong> Used as the public live web endpoint to source nearby clinic locations.</li>
+                    <li><strong>Google Play Services Location:</strong> Used to interface with the device's physical GPS hardware.</li>
+                    <li><strong>Room Persistence Library:</strong> Used for local SQL database management.</li>
+                    <li><strong>Firebase Firestore SDK:</strong> Used to implement real-time cloud backups.</li>
+                </ul>
+
+                <h3>Acknowledgement of AI Assistance</h3>
+                <p>"I would like to acknowledge the assistance of AI tools in refining my UI layout configurations, troubleshooting network-related API exceptions, and helping me polish my layout ideas for this lab and project so that I can imagine how design UI that I want."</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>ALYA DAMIA BINTI MOHAMAD FAJAR | Matric No: A212029 | 2026</p>
+    </footer>
+
+</body>
+</html>
